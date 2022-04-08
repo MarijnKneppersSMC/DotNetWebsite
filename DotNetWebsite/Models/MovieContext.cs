@@ -55,21 +55,5 @@ namespace DotNetWebsite.Models
 
             return movie;
         }
-
-        private void NullSafeSet(string? value, Action<string> setter)
-        {
-            if(!string.IsNullOrEmpty(value))
-            {
-                setter(value);
-            }
-        }
-
-        private void NullSafeSet(int value, Action<int> setter)
-        {
-            if(value != 0)
-            {
-                setter(value);
-            }
-        }
     }
 }
