@@ -9,6 +9,23 @@ namespace DotNetWebsite.Models
 
         public MySqlConnection Connection { get; }
 
+        private static MovieContext? _instance = null;
+        public static MovieContext Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    throw new NullReferenceException("An attempt at getting the MovieContext was made before it was initialised");
+                }
+                return _instance;
+            }
+            set
+            {
+                _instance = value;
+            }
+        }
+
         public MovieContext(string connectionString)
         {
             ConnectionString = connectionString;
@@ -17,7 +34,7 @@ namespace DotNetWebsite.Models
 
             OpenConnection();
 
-            GetMovie(1);
+            Instance = this;
         }
 
         public void OpenConnection()
