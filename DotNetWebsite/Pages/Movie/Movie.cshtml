@@ -3,3 +3,7 @@
 @{
     ViewData["Title"] = $"{@Model.Movie.Title} ({@Model.Movie.Year})";
 }
+
+<h1>@Model.Movie.Title (@Model.Movie.Year)</h1>
+<h4>@Model.Movie.Director</h4>
+<p>@Model.Movie.Synopsis</p>
