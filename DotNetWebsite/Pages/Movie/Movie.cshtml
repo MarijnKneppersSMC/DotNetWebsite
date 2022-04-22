@@ -1,5 +1,5 @@
 ﻿@page "/Movie/{id:int}"
 @model DotNetWebsite.Pages.Movie.MovieModel
 @{
-    ViewData["Title"] = @Model.Movie.Title;
+    ViewData["Title"] = $"{@Model.Movie.Title} ({@Model.Movie.Year})";
 }
