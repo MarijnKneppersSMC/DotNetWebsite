@@ -39,6 +39,7 @@ namespace DotNetWebsite.Models
 
         public void OpenConnection()
         {
+            //NOTE: if connection is timing out, verify you are using the correct connection string. Can be found at Program.cs on line 14
             Connection.Open();
 
             Console.WriteLine("Successfully opened connection with server");

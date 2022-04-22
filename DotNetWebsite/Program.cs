@@ -11,7 +11,10 @@ namespace DotNetWebsite
             // Add services to the container.
             builder.Services.AddRazorPages();
 
-            builder.Services.Add(new ServiceDescriptor(typeof(MovieContext), new MovieContext(builder.Configuration.GetConnectionString("DefaultConnection"))));
+            Console.WriteLine(builder.Configuration.GetConnectionString("SchoolConnection"));
+
+            //connection string moet HomeConnection of SchoolConnection zijn.
+            builder.Services.Add(new ServiceDescriptor(typeof(MovieContext), new MovieContext(builder.Configuration.GetConnectionString("SchoolConnection"))));
 
             WebApplication app = builder.Build();
 
