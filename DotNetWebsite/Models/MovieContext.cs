@@ -49,6 +49,8 @@ namespace DotNetWebsite.Models
             }
         }
 
+        private Dictionary<int, Movie> movieCache = new Dictionary<int, Movie>();
+
         public MovieContext(string connectionString)
         {
             ConnectionString = connectionString;
@@ -79,6 +81,11 @@ namespace DotNetWebsite.Models
 
         public Movie GetMovie(int ID)
         {
+            if(movieCache.ContainsKey(ID))
+            {
+                return movieCache[ID];
+            }
+
             MySqlCommand cmd = new MySqlCommand("select * from Movies where ID = " + ID, Connection);
 
             using var reader = cmd.ExecuteReader();
@@ -93,6 +100,8 @@ namespace DotNetWebsite.Models
             reader.ReadString("DIRECTOR", s => movie.Director = s);
             reader.ReadInt("YEAR", s => movie.Year = s);
             reader.ReadInt("LENGTH", s => movie.Length = s);
+
+            movieCache.Add(ID, movie);
 
             return movie;
         }
