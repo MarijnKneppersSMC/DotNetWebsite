@@ -5,9 +5,31 @@ namespace DotNetWebsite.Models
 {
     public class MovieContext
     {
-        public string ConnectionString { get; set; }
+        public string ConnectionString { get; }
 
-        public MySqlConnection Connection { get; }
+        private MySqlConnection? _connection = null;
+        public MySqlConnection Connection
+        {
+            get
+            {
+                if(_connection == null)
+                {
+                    _connection = new MySqlConnection(ConnectionString);
+                }
+
+                if( _connection.State == System.Data.ConnectionState.Closed )
+                {
+                    _connection.Open();
+                }
+                else if( _connection.State == System.Data.ConnectionState.Broken )
+                {
+                    _connection.Close();
+                    _connection.Open();
+                }
+
+                return _connection;
+            }
+        }
 
         private static MovieContext? _instance = null;
         public static MovieContext Instance
@@ -18,6 +40,7 @@ namespace DotNetWebsite.Models
                 {
                     throw new NullReferenceException("An attempt at getting the MovieContext was made before it was initialised");
                 }
+
                 return _instance;
             }
             set
@@ -30,7 +53,7 @@ namespace DotNetWebsite.Models
         {
             ConnectionString = connectionString;
 
-            Connection = new MySqlConnection(ConnectionString);
+            _connection = new MySqlConnection(ConnectionString);
 
             OpenConnection();
 
@@ -40,7 +63,7 @@ namespace DotNetWebsite.Models
         public void OpenConnection()
         {
             //NOTE: if connection is timing out, verify you are using the correct connection string. Can be found at Program.cs on line 14
-            Connection.Open();
+            _connection.Open();
 
             Console.WriteLine("Successfully opened connection with server");
             Console.WriteLine("Server Information:");
