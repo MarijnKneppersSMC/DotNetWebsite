@@ -12,22 +12,22 @@ namespace DotNetWebsite.Models
         {
             get
             {
-                if(_connection == null)
+                if (_connection == null)
                 {
                     _connection = new MySqlConnection(ConnectionString);
                 }
 
-                if( _connection.State == System.Data.ConnectionState.Closed )
-                {
-                    _connection.Open();
-                }
-                else if( _connection.State == System.Data.ConnectionState.Broken )
+                if (_connection.State == System.Data.ConnectionState.Broken)
                 {
                     _connection.Close();
                     _connection.Open();
                 }
 
                 return _connection;
+            }
+            private set
+            {
+                _connection = value;
             }
         }
 
@@ -53,7 +53,7 @@ namespace DotNetWebsite.Models
         {
             ConnectionString = connectionString;
 
-            _connection = new MySqlConnection(ConnectionString);
+            Connection = new MySqlConnection(ConnectionString);
 
             OpenConnection();
 
@@ -63,7 +63,7 @@ namespace DotNetWebsite.Models
         public void OpenConnection()
         {
             //NOTE: if connection is timing out, verify you are using the correct connection string. Can be found at Program.cs on line 14
-            _connection.Open();
+            Connection.Open();
 
             Console.WriteLine("Successfully opened connection with server");
             Console.WriteLine("Server Information:");
