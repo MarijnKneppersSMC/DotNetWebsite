@@ -1,4 +1,5 @@
-using DotNetWebsite.Models;
+using DotNetWebsite.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace DotNetWebsite
 {
@@ -19,14 +20,20 @@ namespace DotNetWebsite
                 ;
 #endif
 
+            string connectionString = builder.Configuration.GetConnectionString("HomeConnection");
+            builder.Services.AddDbContext<DatabaseContext>(
+            dbContextOptions => dbContextOptions
+                .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+                .LogTo(Console.WriteLine, LogLevel.Warning)
 
-            //connection string moet HomeConnection of SchoolConnection zijn.
-            builder.Services.Add(new ServiceDescriptor(typeof(MovieContext), new MovieContext(builder.Configuration.GetConnectionString("HomeConnection"))));
+#if DEBUG
+                .LogTo(Console.WriteLine, LogLevel.Information)
+                .EnableSensitiveDataLogging()
+                .EnableDetailedErrors()
+#endif
+        );
 
             WebApplication app = builder.Build();
-
-            //Currently using ! to override nullable. Need to add an actual check
-            app.Lifetime.ApplicationStopping.Register(() => { ((MovieContext)app.Services.GetService(typeof(MovieContext))!).CloseConnection(); });
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

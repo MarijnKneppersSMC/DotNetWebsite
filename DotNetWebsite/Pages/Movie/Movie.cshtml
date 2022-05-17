@@ -1,9 +1,45 @@
-﻿@page "/Movie/{id:int}"
+﻿@page "/Movie/{id}"
 @model DotNetWebsite.Pages.Movie.MovieModel
+
 @{
-    ViewData["Title"] = $"{@Model.Movie.Title} ({@Model.Movie.Year})";
+    ViewData["Title"] = $"{Model.Movie.Title} ({Model.Movie.Year})";
 }
 
-<h1>@Model.Movie.Title (@Model.Movie.Year)</h1>
-<h4>@Model.Movie.Director</h4>
-<p>@Model.Movie.Synopsis</p>
+<h1>Movie</h1>
+
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Movie.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Movie.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Movie.Synopsis)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Movie.Synopsis)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Movie.Director)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Movie.Director)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Movie.Year)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Movie.Year)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Movie.Length)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Movie.Length)
+        </dd>
+    </dl>
+</div>

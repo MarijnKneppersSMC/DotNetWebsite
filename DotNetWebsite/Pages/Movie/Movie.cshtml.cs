@@ -1,37 +1,38 @@
-using DotNetWebsite.Models;
+﻿using DotNetWebsite.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace DotNetWebsite.Pages.Movie
 {
     public class MovieModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly DatabaseContext _context;
 
-        private Models.Movie? _movie;
-        public Models.Movie Movie
+        public MovieModel(DatabaseContext context)
         {
-            get
-            {
-                if (_movie == null)
-                {
-                    throw new NullReferenceException("No movie has been retrieved yet");
-                }
-                return _movie;
-            }
-            set
-            {
-                _movie = value;
-            }
+            _context = context;
         }
 
-        public MovieModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
+        public Models.Movie Movie { get; set; } = default!; 
 
-        public void OnGet(int ID)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
-            Movie = MovieContext.Instance.GetMovie(ID);
+            if (id == null || _context.Movies == null)
+            {
+                return NotFound();
+            }
+
+            var movie = await _context.Movies.FirstOrDefaultAsync(m => m.Id == id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+            else 
+            {
+                Movie = movie;
+            }
+            return Page();
         }
     }
 }
