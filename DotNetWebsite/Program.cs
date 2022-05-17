@@ -10,8 +10,13 @@ namespace DotNetWebsite
 
             // Add services to the container.
             builder.Services.AddRazorPages()
+                //TODO: just make this 2 seperate statements. Readability over less repetition in this case
 #if DEBUG
+                //This would only take up resources in production without any use
                 .AddRazorRuntimeCompilation();
+#else
+                //terminate if not in release
+                ;
 #endif
 
 
