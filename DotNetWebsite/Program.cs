@@ -22,16 +22,9 @@ namespace DotNetWebsite
 
             string connectionString = builder.Configuration.GetConnectionString("HomeConnection");
             builder.Services.AddDbContext<DatabaseContext>(
-            dbContextOptions => dbContextOptions
-                .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
-                .LogTo(Console.WriteLine, LogLevel.Warning)
-
-#if DEBUG
-                .LogTo(Console.WriteLine, LogLevel.Information)
-                .EnableSensitiveDataLogging()
-                .EnableDetailedErrors()
-#endif
-        );
+                dbContextOptions => dbContextOptions
+                    .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+            );
 
             WebApplication app = builder.Build();
 
