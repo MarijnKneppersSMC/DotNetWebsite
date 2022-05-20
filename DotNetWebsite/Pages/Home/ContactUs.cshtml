@@ -1,0 +1,14 @@
+﻿@page "/contact"
+@model DotNetWebsite.Pages.Home.ContactUsModel
+@{
+}
+
+<form>
+    <input asp-for="@Model.Person.FirstName" type="text" required/>
+    <input asp-for="@Model.Person.LastName" type="text" required/>
+    <input asp-for="@Model.Person.Email" type="email" required/>
+    <input asp-for="@Model.Person.Telephone" type="tel" />
+    <input asp-for="@Model.Person.Address" type="text"/>
+    <textarea asp-for="@Model.Person.Message"></textarea>
+    <button action="submit">Send</button>
+</form>
