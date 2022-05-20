@@ -5,24 +5,13 @@
     ViewData["Title"] = $"{Model.Movie.Title} ({Model.Movie.Year})";
 }
 
-<h1>Movie</h1>
+<link rel="stylesheet" href="../../css/site.css">
+
+<h1>@Html.DisplayFor(model => model.Movie.Title)</h1>
 
 <div>
-    <h4>Movie</h4>
-    <hr />
+    <p>@Html.DisplayFor(model => model.Movie.Synopsis)</p>
     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Movie.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.Synopsis)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Movie.Synopsis)
-        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Movie.Director)
         </dt>
@@ -30,16 +19,17 @@
             @Html.DisplayFor(model => model.Movie.Director)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.Year)
+            Release Year
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Movie.Year)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.Length)
+            Duration
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Movie.Length)
+            @Html.DisplayFor(model => model.Movie.Length) min
         </dd>
     </dl>
+    <img id="preview" src="https://www.boekenvoordeel.nl/media/catalog/product/cache/1/image/400x567.01030927835/9df78eab33525d08d6e5fb8d27136e95/4/2/428195.png">
 </div>
