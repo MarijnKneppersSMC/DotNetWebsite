@@ -1,18 +1,19 @@
 ﻿@page
 @model DotNetWebsite.Pages.Movie.IndexModel
 @{
-}
-
-<form>
-<input asp-for="@Model.SearchString" />
-<button action="submit">Search</button>
-</form>
-
-@{
     List<Models.Movie> filteredMovies = Model.FilteredMovies;
 }
 
+
+
+<form>
+    <input asp-for="@Model.SearchString" />
+    <button action="submit">Search</button>
+</form>
+
 @for(int i = 0; i < filteredMovies.Count; i++)
 {
-    <p>@filteredMovies[i].Title</p>
+    <div class="nav-item">
+        <a class="nav-link" target="_blank" asp-page="/Movie/Movie" asp-route-id="@filteredMovies[i].Id">@filteredMovies[i].Title (@filteredMovies[i].Year)</a>
+    </div>
 }
