@@ -20,7 +20,7 @@ namespace DotNetWebsite
                 ;
 #endif
 
-            string connectionString = builder.Configuration.GetConnectionString("SchoolConnection");
+            string connectionString = builder.Configuration.GetConnectionString("HomeConnection");
             builder.Services.AddDbContext<DatabaseContext>(
                 dbContextOptions => dbContextOptions
                     .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
