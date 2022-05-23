@@ -34,6 +34,8 @@ namespace DotNetWebsite
                 app.UseExceptionHandler("/Error");
             }
 
+			app.UseStatusCodePagesWithRedirects("/StatusCode/{0}");
+
             app.UseStaticFiles();
 
             app.UseRouting();
