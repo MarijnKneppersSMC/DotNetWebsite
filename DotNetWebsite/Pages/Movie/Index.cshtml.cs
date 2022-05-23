@@ -25,14 +25,12 @@ namespace DotNetWebsite.Pages.Movie
             _context = context;
         }
 
-        public async Task<IActionResult> OnGetAsync(string? searchString)
+        public void OnGet(string? searchString)
         {
             if (searchString != null)
             {
                 SearchString = searchString;
             }
-
-            return Page();
         }
     }
 }

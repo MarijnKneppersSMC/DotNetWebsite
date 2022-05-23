@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DotNetWebsite.Models
 {
+	#pragma warning disable CS8618
     public class Person
     {
         [BindProperty]
@@ -28,3 +29,4 @@ namespace DotNetWebsite.Models
         public string Message { get; set; }
     }
 }
+#pragma warning restore
