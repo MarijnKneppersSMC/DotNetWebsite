@@ -8,7 +8,11 @@ namespace DotNetWebsite.Pages.Home
 
         public Person Person = new Person();
 
-        public void OnGet(Person? person)
+        public void OnGet()
+        {
+        }
+
+		public void OnPost(Person? person)
         {
         }
 
