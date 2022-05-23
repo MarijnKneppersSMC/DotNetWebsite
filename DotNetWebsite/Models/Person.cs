@@ -19,13 +19,15 @@ namespace DotNetWebsite.Models
         public string Email { get; set; }
 
         [BindProperty]
-        [Phone]
+        [Required, Phone]
         public string Telephone { get; set; }
 
         [BindProperty]
+		[Required]
         public string Address { get; set; }
 
         [BindProperty]
+		[Required]
         public string Message { get; set; }
     }
 }

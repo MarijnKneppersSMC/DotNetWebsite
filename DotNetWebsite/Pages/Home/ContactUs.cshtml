@@ -3,12 +3,25 @@
 @{
 }
 
+@if(ModelState.IsValid)
+{
+	<div style="background-color: green;">
+		<p>The contact request was successfully sent</p>
+	</div>
+}
+
 <form method="post">
-    <input asp-for="@Model.Person.FirstName" type="text" required/>
-    <input asp-for="@Model.Person.LastName" type="text" required/>
-    <input asp-for="@Model.Person.Email" type="email" required/>
+    <input asp-for="@Model.Person.FirstName" type="text" />
+	@Html.ValidationMessageFor(m => m.Person.FirstName)
+    <input asp-for="@Model.Person.LastName" type="text" />
+	@Html.ValidationMessageFor(m => m.Person.LastName)
+    <input asp-for="@Model.Person.Email" type="email" />
+	@Html.ValidationMessageFor(m => m.Person.Email)
     <input asp-for="@Model.Person.Telephone" type="tel" />
+	@Html.ValidationMessageFor(m => m.Person.Telephone)
     <input asp-for="@Model.Person.Address" type="text"/>
+	@Html.ValidationMessageFor(m => m.Person.Address)
     <textarea asp-for="@Model.Person.Message"></textarea>
+	@Html.ValidationMessageFor(m => m.Person.Message)
     <button action="submit">Send</button>
 </form>

@@ -8,12 +8,15 @@ namespace DotNetWebsite.Pages.Home
 
         public Person Person = new Person();
 
+		public bool success = false;
+
         public void OnGet()
         {
         }
 
-		public void OnPost(Person? person)
+		public void OnPost(Person person)
         {
+			
         }
 
     }
