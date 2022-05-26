@@ -7,9 +7,13 @@
 
 <link rel="stylesheet" href="../../css/site.css">
 
-<h1>@Html.DisplayFor(model => model.Movie.Title)</h1>
 
-<div>
+<div class="frame">
+    <img class="poster" src=@Html.DisplayFor(model => model.Movie.Poster)>
+</div>
+
+<div class="information">
+    <h1>@Html.DisplayFor(model => model.Movie.Title)</h1>
     <p>@Html.DisplayFor(model => model.Movie.Synopsis)</p>
     <dl class="row">
         <dt class="col-sm-2">
@@ -31,5 +35,4 @@
             @Html.DisplayFor(model => model.Movie.Length) min
         </dd>
     </dl>
-    <img id="preview" src="https://www.boekenvoordeel.nl/media/catalog/product/cache/1/image/400x567.01030927835/9df78eab33525d08d6e5fb8d27136e95/4/2/428195.png">
 </div>

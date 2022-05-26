@@ -8,6 +8,7 @@
         public string Director { get; set; } = "Director not available";
         public int Year { get; set; } = -1;
         public int Length { get; set; } = -1;
+        public string Poster { get; set; } = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png";
 
     }
 }
