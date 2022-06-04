@@ -7,27 +7,27 @@ namespace DotNetWebsite.Pages.Home
 	public class ContactUsModel : PageModel
     {
 
-        [BindProperty(SupportsGet = true)]
+        [BindProperty]
         [Required, MinLength(1)]
         public string FirstName { get; set; } = string.Empty;
 
-        [BindProperty(SupportsGet = true)]
+        [BindProperty]
         [Required, MinLength(1)]
         public string LastName { get; set; } = string.Empty;
 
-        [BindProperty(SupportsGet = true)]
+        [BindProperty]
         [Required, EmailAddress]
         public string Email { get; set; } = string.Empty;
 
-        [BindProperty(SupportsGet = true)]
+        [BindProperty]
         [Required, Phone]
         public string Telephone { get; set; } = string.Empty;
 
-        [BindProperty(SupportsGet = true)]
+        [BindProperty]
         [Required]
         public string Address { get; set; } = string.Empty;
 
-        [BindProperty(SupportsGet = true)]
+        [BindProperty]
         [Required, MinLength(1)]
         public string Message { get; set; } = string.Empty;
 

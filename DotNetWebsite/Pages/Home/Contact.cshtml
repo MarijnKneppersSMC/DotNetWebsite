@@ -1,7 +1,7 @@
 ﻿@page "/contact"
 @model DotNetWebsite.Pages.Home.ContactUsModel
 
-@if(ModelState.IsValid)
+@if(Request.Method == "POST" && ModelState.IsValid)
 {
 	<div style="background-color: green;">
 		<p>The contact request was successfully sent</p>
