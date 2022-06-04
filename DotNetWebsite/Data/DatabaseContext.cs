@@ -14,10 +14,12 @@ namespace DotNetWebsite.Data
 #pragma warning restore CS8618
 
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<UserData> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Movie>().ToTable("Movies");
+            modelBuilder.Entity<Movie>().ToTable("movies");
+            modelBuilder.Entity<UserData>().ToTable("users");
         }
     }
 }
