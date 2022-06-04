@@ -9,17 +9,17 @@
 }
 
 <form method="post">
-    <input asp-for="@Model.Person.FirstName" type="text" />
-	@Html.ValidationMessageFor(m => m.Person.FirstName)
-    <input asp-for="@Model.Person.LastName" type="text" />
-	@Html.ValidationMessageFor(m => m.Person.LastName)
-    <input asp-for="@Model.Person.Email" type="email" />
-	@Html.ValidationMessageFor(m => m.Person.Email)
-    <input asp-for="@Model.Person.Telephone" type="tel" />
-	@Html.ValidationMessageFor(m => m.Person.Telephone)
-    <input asp-for="@Model.Person.Address" type="text"/>
-	@Html.ValidationMessageFor(m => m.Person.Address)
-    <textarea asp-for="@Model.Person.Message"></textarea>
-	@Html.ValidationMessageFor(m => m.Person.Message)
+    <input asp-for="@Model.FirstName" type="text" />
+	@Html.ValidationMessageFor(m => m.FirstName)
+    <input asp-for="@Model.LastName" type="text" />
+	@Html.ValidationMessageFor(m => m.LastName)
+    <input asp-for="@Model.Email" type="email" />
+	@Html.ValidationMessageFor(m => m.Email)
+    <input asp-for="@Model.Telephone" type="tel" />
+	@Html.ValidationMessageFor(m => m.Telephone)
+    <input asp-for="@Model.Address" type="text"/>
+	@Html.ValidationMessageFor(m => m.Address)
+    <textarea asp-for="@Model.Message"></textarea>
+	@Html.ValidationMessageFor(m => m.Message)
     <button action="submit">Send</button>
 </form>
