@@ -26,6 +26,19 @@ namespace DotNetWebsite
                     .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
             );
 
+            builder.Services.AddSession(options =>
+            {
+                options.Cookie.Name = "DotNetMovieDatabase.Session";
+                options.IdleTimeout = TimeSpan.FromDays(1);
+                options.Cookie.IsEssential = true;
+			});
+
+            builder.Services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.Strict;
+            });
+
             WebApplication app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -41,6 +54,10 @@ namespace DotNetWebsite
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCookiePolicy();
+
+            app.UseSession();
 
             app.MapRazorPages();
 
