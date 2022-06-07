@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 using DotNetWebsite.Data;
+using System.Runtime.ConstrainedExecution;
+using System.Security.Cryptography;
 
 namespace DotNetWebsite.Pages.Account
 {
@@ -39,15 +41,17 @@ namespace DotNetWebsite.Pages.Account
 			Username = username;
 			Password = password;
 
-			if(this.ModelState.IsValid)
+			if(ModelState.IsValid)
 			{
 				if(context.Users.Where((user) => user.Username.ToLower() == username.ToLower()).ToArray().Length != 0)
 				{
 					Taken = true;
 					return;
 				}
-				var user = new Models.UserData(){Username=username, Password=password};
-				context.Users.Add(user);
+
+				string hashedPassword = Utility.ComputeSha256Hash(password);
+
+				context.Users.Add(new Models.UserData(){ Username = username, Password = hashedPassword});
 				context.SaveChanges();
 			}
 		}
