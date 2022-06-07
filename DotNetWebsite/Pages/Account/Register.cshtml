@@ -1,0 +1,12 @@
+@page "/register"
+@model DotNetWebsite.Pages.Account.RegisterModel
+
+<form method="post">
+	<input type="text" asp-for="@Model.Username"/>
+	@Html.ValidationMessageFor(m => m.Username)
+	<input type="password" asp-for="@Model.Password"/>
+	@Html.ValidationMessageFor(m => m.Password)
+	<input type="password" asp-for="@Model.ConfirmPassword"/>
+	@Html.ValidationMessageFor(m => m.ConfirmPassword)
+	<button action="submit">Register</button>
+</form>

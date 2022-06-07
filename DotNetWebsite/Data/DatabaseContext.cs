@@ -18,6 +18,7 @@ namespace DotNetWebsite.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+			modelBuilder.Entity<Movie>().HasKey(m => m.Id);
             modelBuilder.Entity<Movie>().ToTable("movies");
             modelBuilder.Entity<UserData>().ToTable("users");
         }
