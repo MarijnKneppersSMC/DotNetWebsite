@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DotNetWebsite.Pages.Home
 {
-	public class ContactUsModel : PageModel
+	public class ContactModel : PageModel
     {
 
         [BindProperty]
