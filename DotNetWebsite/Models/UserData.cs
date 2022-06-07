@@ -12,6 +12,8 @@ namespace DotNetWebsite.Models
 		public string Password { get; set; } = "Password not found";
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public DateTime CreationDate { get; set; }
+		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		public bool Admin { get; set; }
 
 	}
 }
