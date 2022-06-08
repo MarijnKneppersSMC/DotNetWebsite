@@ -1,5 +1,6 @@
 using DotNetWebsite.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace DotNetWebsite
 {
@@ -8,6 +9,7 @@ namespace DotNetWebsite
         static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
 
             // Add services to the container.
             builder.Services.AddRazorPages()
@@ -26,12 +28,8 @@ namespace DotNetWebsite
                     .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
             );
 
-            builder.Services.AddSession(options =>
-            {
-                options.Cookie.Name = "DotNetMovieDatabase.Session";
-                options.IdleTimeout = TimeSpan.FromDays(1);
-                options.Cookie.IsEssential = true;
-			});
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<DatabaseContext>();
 
             builder.Services.Configure<CookiePolicyOptions>(options =>
             {
@@ -52,6 +50,7 @@ namespace DotNetWebsite
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication();;
 
             app.UseAuthorization();
 
