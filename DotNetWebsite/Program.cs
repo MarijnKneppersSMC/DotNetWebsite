@@ -29,14 +29,15 @@ namespace DotNetWebsite
             );
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<DatabaseContext>();
 
-			builder.Services.AddSession(options =>
+            builder.Services.AddSession(options =>
             {
                 options.Cookie.Name = "DotNetMovieDatabase.Session";
                 options.IdleTimeout = TimeSpan.FromDays(1);
                 options.Cookie.IsEssential = true;
-			});
+            });
 
             builder.Services.Configure<CookiePolicyOptions>(options =>
             {
@@ -58,9 +59,11 @@ namespace DotNetWebsite
 
             app.UseRouting();
 
-            app.UseAuthentication();;
+            app.UseAuthentication();
 
             app.UseAuthorization();
+
+            SetupAuthentication(app.Services);
 
             app.UseCookiePolicy();
 
@@ -70,6 +73,26 @@ namespace DotNetWebsite
 
             app.Run();
 
+        }
+
+        private static async void SetupAuthentication(IServiceProvider serviceProvider)
+        {
+            string[] roles = { "Admin" };
+
+            using (var scope = serviceProvider.CreateScope())
+            {
+
+                RoleManager<IdentityRole> roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+                for (int i = 0; i < roles.Length; i++)
+                {
+                    bool roleExists = await roleManager.RoleExistsAsync(roles[i]);
+                    if (!roleExists)
+                    {
+                        await roleManager.CreateAsync(new IdentityRole(roles[i]));
+                    }
+                }
+            }
         }
 
     }

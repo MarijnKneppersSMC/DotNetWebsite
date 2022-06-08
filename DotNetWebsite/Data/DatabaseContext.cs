@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace DotNetWebsite.Data
 {
@@ -19,8 +20,19 @@ namespace DotNetWebsite.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-			modelBuilder.Entity<Movie>().HasKey(m => m.Id);
+
+            
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.HasCharSet("latin1");
+
+            modelBuilder.Entity<Movie>().HasKey(m => m.Id);
             modelBuilder.Entity<Movie>().ToTable("movies");
+
+            modelBuilder.Entity<IdentityUserToken<int>>().HasKey(m => m.UserId);
+            modelBuilder.Entity<IdentityUserLogin<int>>().HasKey(m => m.UserId);
+
+
         }
     }
 }
