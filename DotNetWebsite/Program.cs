@@ -31,6 +31,13 @@ namespace DotNetWebsite
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<DatabaseContext>();
 
+			builder.Services.AddSession(options =>
+            {
+                options.Cookie.Name = "DotNetMovieDatabase.Session";
+                options.IdleTimeout = TimeSpan.FromDays(1);
+                options.Cookie.IsEssential = true;
+			});
+
             builder.Services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
@@ -50,6 +57,7 @@ namespace DotNetWebsite
             app.UseStaticFiles();
 
             app.UseRouting();
+
             app.UseAuthentication();;
 
             app.UseAuthorization();
