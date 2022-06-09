@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DotNetWebsite.Pages.Movie
 {
+    [ResponseCache(Duration = 30 * 60)]
     public class MovieModel : PageModel
     {
         private readonly DatabaseContext _context;
@@ -14,7 +15,7 @@ namespace DotNetWebsite.Pages.Movie
             _context = context;
         }
 
-        public Models.Movie Movie { get; set; } = default!; 
+        public Models.Movie Movie { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,7 +29,7 @@ namespace DotNetWebsite.Pages.Movie
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 Movie = movie;
             }

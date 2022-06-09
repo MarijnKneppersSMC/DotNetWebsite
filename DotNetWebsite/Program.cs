@@ -4,22 +4,57 @@ using Microsoft.AspNetCore.Identity;
 
 namespace DotNetWebsite
 {
-    class Program {
+    class Program
+    {
 
         static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+            WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+            ConfigureServices(builder);
 
-            // Add services to the container.
-            builder.Services.AddRazorPages()
-                //TODO: just make this 2 seperate statements. Readability over less repetition in this case
+            WebApplication app = builder.Build();
+
+            // Configure the HTTP request pipeline.
+            if (!app.Environment.IsDevelopment())
+            {
+                app.UseExceptionHandler("/Error");
+            }
+
+            app.UseStatusCodePagesWithRedirects("/StatusCode/{0}");
+
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                OnPrepareResponse = r =>
+                {
+                    r.Context.Response.Headers.Append("Cache-Control", $"max-age={30 * 60}");
+                }
+            });
+
+            app.UseRouting();
+
+            app.UseAuthentication();
+
+            app.UseAuthorization();
+
+            SetupAuthentication(app.Services);
+
+            app.UseCookiePolicy();
+
+            app.UseSession();
+
+            app.MapRazorPages();
+
+            app.Run();
+
+        }
+
+        private static void ConfigureServices(WebApplicationBuilder builder)
+        {
 #if DEBUG
-                //This would only take up resources in production without any use
-                .AddRazorRuntimeCompilation();
+            builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 #else
-                //terminate if not in release
-                ;
+            builder.Services.AddRazorPages();
 #endif
 
             string connectionString = builder.Configuration.GetConnectionString("HomeConnection");
@@ -44,35 +79,6 @@ namespace DotNetWebsite
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.Strict;
             });
-
-            WebApplication app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-            if (!app.Environment.IsDevelopment())
-            {
-                app.UseExceptionHandler("/Error");
-            }
-
-			app.UseStatusCodePagesWithRedirects("/StatusCode/{0}");
-
-            app.UseStaticFiles();
-
-            app.UseRouting();
-
-            app.UseAuthentication();
-
-            app.UseAuthorization();
-
-            SetupAuthentication(app.Services);
-
-            app.UseCookiePolicy();
-
-            app.UseSession();
-
-            app.MapRazorPages();
-
-            app.Run();
-
         }
 
         private static async void SetupAuthentication(IServiceProvider serviceProvider)
