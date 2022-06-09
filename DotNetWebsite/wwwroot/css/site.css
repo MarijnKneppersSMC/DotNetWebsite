@@ -23,6 +23,7 @@ body {
 }
 
 .footer {
-    position: relative;
-    bottom: -40vh;
+    position: fixed;
+    bottom: 15px;
+    width: 100vw;
 }
