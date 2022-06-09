@@ -7,8 +7,14 @@
 
 
 <form>
-    <input asp-for="@Model.SearchString" />
-    <button action="submit">Search</button>
+    <div class="form-group search-form">
+        <input type="text" placeholder="Search movie" asp-for="@Model.SearchString" class="form-control"/>
+        <input type="submit" value="Search" class="btn btn-primary" />
+        <span asp-validation-for="@Model.SearchString" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        
+    </div>
 </form>
 
 @for(int i = 0; i < filteredMovies.Count; i++)
