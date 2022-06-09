@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace DotNetWebsite.Pages
 {
-    [ResponseCache(Duration = 60 * 60)]
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;

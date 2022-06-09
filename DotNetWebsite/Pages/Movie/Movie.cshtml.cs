@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DotNetWebsite.Pages.Movie
 {
-    [ResponseCache(Duration = 30 * 60)]
     public class MovieModel : PageModel
     {
         private readonly DatabaseContext _context;

@@ -74,6 +74,9 @@ namespace DotNetWebsite
                 options.Cookie.IsEssential = true;
             });
 
+            builder.Services.AddAntiforgery(options => { options.SuppressXFrameOptionsHeader = true; });
+
+
             builder.Services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
