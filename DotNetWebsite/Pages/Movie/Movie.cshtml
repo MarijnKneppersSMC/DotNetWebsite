@@ -1,6 +1,10 @@
 ﻿@page "/movie/{id:int}"
 @model DotNetWebsite.Pages.Movie.MovieModel
 
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+
 @{
     ViewData["Title"] = $"{Model.Movie.Title} ({Model.Movie.Year})";
 }
@@ -36,3 +40,13 @@
         </dd>
     </dl>
 </div>
+
+@if(SignInManager.IsSignedIn(User))
+{
+    @if (User.IsInRole("Admin"))
+    {
+        <div>
+            <a asp-page="/Movie/Manage/Edit" asp-route-id="@Model.Movie.Id">edit</a>
+        </div>
+    }
+}

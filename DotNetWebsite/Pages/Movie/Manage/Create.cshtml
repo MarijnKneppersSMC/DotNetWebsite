@@ -1,0 +1,60 @@
+﻿@page "/movie/manage/create"
+@model DotNetWebsite.Pages.Movie.Manage.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Movie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Movie.Title" class="control-label"></label>
+                <input asp-for="Movie.Title" class="form-control" />
+                <span asp-validation-for="Movie.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.Synopsis" class="control-label"></label>
+                <input asp-for="Movie.Synopsis" class="form-control" />
+                <span asp-validation-for="Movie.Synopsis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.Director" class="control-label"></label>
+                <input asp-for="Movie.Director" class="form-control" />
+                <span asp-validation-for="Movie.Director" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.Year" class="control-label"></label>
+                <input asp-for="Movie.Year" class="form-control" />
+                <span asp-validation-for="Movie.Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.Length" class="control-label"></label>
+                <input asp-for="Movie.Length" class="form-control" />
+                <span asp-validation-for="Movie.Length" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.Poster" class="control-label"></label>
+                <input asp-for="Movie.Poster" class="form-control" />
+                <span asp-validation-for="Movie.Poster" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
