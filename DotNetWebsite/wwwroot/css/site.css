@@ -21,9 +21,3 @@ body {
     margin-right: 20px;
     float: left;
 }
-
-.footer {
-    position: fixed;
-    bottom: 15px;
-    width: 100vw;
-}
