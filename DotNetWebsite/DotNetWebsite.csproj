@@ -33,6 +33,6 @@
 <PropertyGroup>
   <PublishSingleFile>true</PublishSingleFile>
   <PublishTrimmed>true</PublishTrimmed>
-<PropertyGroup>
+</PropertyGroup>
 
 </Project>
