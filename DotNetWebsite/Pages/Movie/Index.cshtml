@@ -1,10 +1,10 @@
 ﻿@page "/movie"
 @model DotNetWebsite.Pages.Movie.IndexModel
+
 @{
+	ViewData["Title"] = "Search movie";
     List<Models.Movie> filteredMovies = Model.FilteredMovies;
 }
-
-
 
 <form>
     <div class="form-group search-form">

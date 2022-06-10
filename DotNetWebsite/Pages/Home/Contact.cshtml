@@ -1,6 +1,10 @@
 ﻿@page "/contact"
 @model DotNetWebsite.Pages.Home.ContactModel
 
+@{
+	ViewData["Title"] = "Contact";
+}
+
 @if(Request.Method == "POST" && ModelState.IsValid)
 {
 	<div style="background-color: green;">
