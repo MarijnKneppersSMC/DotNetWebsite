@@ -31,7 +31,6 @@
 </Target>
   
 <PropertyGroup>
-  <PublishSingleFile>true</PublishSingleFile>
   <PublishTrimmed>true</PublishTrimmed>
 </PropertyGroup>
 
