@@ -8,11 +8,11 @@ namespace DotNetWebsite.Pages.Home
     {
 
         [BindProperty]
-        [Required, MinLength(1)]
+        [Required]
         public string FirstName { get; set; } = string.Empty;
 
         [BindProperty]
-        [Required, MinLength(1)]
+        [Required]
         public string LastName { get; set; } = string.Empty;
 
         [BindProperty]
@@ -28,7 +28,7 @@ namespace DotNetWebsite.Pages.Home
         public string Address { get; set; } = string.Empty;
 
         [BindProperty]
-        [Required, MinLength(1)]
+        [Required]
         public string Message { get; set; } = string.Empty;
 
         public void OnGet()
