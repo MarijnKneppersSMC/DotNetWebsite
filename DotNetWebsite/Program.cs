@@ -27,7 +27,7 @@ namespace DotNetWebsite
             {
                 OnPrepareResponse = r =>
                 {
-                    r.Context.Response.Headers.Append("Cache-Control", $"max-age={30 * 60}");
+                    r.Context.Response.Headers.Append("Cache-Control", $"max-age={120 * 60}");
                 }
             });
 
