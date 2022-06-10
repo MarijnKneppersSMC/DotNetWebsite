@@ -15,9 +15,9 @@ namespace DotNetWebsite.Pages.Movie.Manage
     [Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
-        private readonly DotNetWebsite.Data.DatabaseContext _context;
+        private readonly DatabaseContext _context;
 
-        public DeleteModel(DotNetWebsite.Data.DatabaseContext context)
+        public DeleteModel(DatabaseContext context)
         {
             _context = context;
         }

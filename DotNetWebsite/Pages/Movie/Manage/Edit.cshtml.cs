@@ -16,9 +16,9 @@ namespace DotNetWebsite.Pages.Movie.Manage
     [Authorize(Roles = "Admin")]
     public class EditModel : PageModel
     {
-        private readonly DotNetWebsite.Data.DatabaseContext _context;
+        private readonly DatabaseContext _context;
 
-        public EditModel(DotNetWebsite.Data.DatabaseContext context)
+        public EditModel(DatabaseContext context)
         {
             _context = context;
         }

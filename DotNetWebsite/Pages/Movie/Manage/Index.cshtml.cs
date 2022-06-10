@@ -15,9 +15,9 @@ namespace DotNetWebsite.Pages.Movie.Manage
     [Authorize(Roles = "Admin")]
     public class IndexModel : PageModel
     {
-        private readonly DotNetWebsite.Data.DatabaseContext _context;
+        private readonly DatabaseContext _context;
 
-        public IndexModel(DotNetWebsite.Data.DatabaseContext context)
+        public IndexModel(DatabaseContext context)
         {
             _context = context;
         }

@@ -14,9 +14,9 @@ namespace DotNetWebsite.Pages.Movie.Manage
     [Authorize(Roles = "Admin")]
     public class CreateModel : PageModel
     {
-        private readonly DotNetWebsite.Data.DatabaseContext _context;
+        private readonly DatabaseContext _context;
 
-        public CreateModel(DotNetWebsite.Data.DatabaseContext context)
+        public CreateModel(DatabaseContext context)
         {
             _context = context;
         }
