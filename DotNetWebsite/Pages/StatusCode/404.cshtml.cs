@@ -5,10 +5,9 @@ namespace DotNetWebsite.Pages.Movie
     public class PageNotFoundModel : PageModel
     {
 
-		public void OnGet()
-		{
-			
-		}
+        public void OnGet()
+        {
+        }
 
-	}
+    }
 }

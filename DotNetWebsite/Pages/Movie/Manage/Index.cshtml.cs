@@ -22,7 +22,7 @@ namespace DotNetWebsite.Pages.Movie.Manage
             _context = context;
         }
 
-        public IList<Models.Movie> Movie { get;set; } = default!;
+        public IList<Models.Movie> Movie { get; set; } = default!;
 
         public async Task OnGetAsync()
         {

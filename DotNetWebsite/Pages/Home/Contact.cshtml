@@ -2,18 +2,18 @@
 @model DotNetWebsite.Pages.Home.ContactModel
 
 @{
-	ViewData["Title"] = "Contact";
+    ViewData["Title"] = "Contact";
 }
 
-@if(Request.Method == "POST" && ModelState.IsValid)
+@if (Request.Method == "POST" && ModelState.IsValid)
 {
-	<div style="background-color: green;">
-		<p>The contact request was successfully sent</p>
-	</div>
+    <div style="background-color: green;">
+        <p>The contact request was successfully sent</p>
+    </div>
 }
 
 <form method="post">
-	<div class="form-group">
+    <div class="form-group">
         <label asp-for="@Model.FirstName" class="control-label"></label>
         <input type="text" asp-for="@Model.FirstName" class="form-control" />
         <span asp-validation-for="@Model.FirstName" class="text-danger"></span>

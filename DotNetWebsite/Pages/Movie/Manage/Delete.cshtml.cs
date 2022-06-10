@@ -23,7 +23,7 @@ namespace DotNetWebsite.Pages.Movie.Manage
         }
 
         [BindProperty]
-      public Models.Movie Movie { get; set; } = default!;
+        public Models.Movie Movie { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -38,7 +38,7 @@ namespace DotNetWebsite.Pages.Movie.Manage
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 Movie = movie;
             }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DotNetWebsite.Pages.Home
 {
-	public class ContactModel : PageModel
+    public class ContactModel : PageModel
     {
 
         [BindProperty]
@@ -35,7 +35,7 @@ namespace DotNetWebsite.Pages.Home
         {
         }
 
-		public void OnPost(string firstName, string lastName, string email, string telephone, string address, string message)
+        public void OnPost(string firstName, string lastName, string email, string telephone, string address, string message)
         {
             FirstName = firstName;
             LastName = lastName;

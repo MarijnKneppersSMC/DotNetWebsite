@@ -28,12 +28,12 @@ namespace DotNetWebsite.Pages.Movie.Manage
 
         [BindProperty]
         public Models.Movie Movie { get; set; } = default!;
-        
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Movies == null || Movie == null)
+            if (!ModelState.IsValid || _context.Movies == null || Movie == null)
             {
                 return Page();
             }

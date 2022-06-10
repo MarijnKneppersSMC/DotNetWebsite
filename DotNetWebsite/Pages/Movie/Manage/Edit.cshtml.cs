@@ -33,7 +33,7 @@ namespace DotNetWebsite.Pages.Movie.Manage
                 return NotFound();
             }
 
-            var movie =  await _context.Movies.FirstOrDefaultAsync(m => m.Id == id);
+            var movie = await _context.Movies.FirstOrDefaultAsync(m => m.Id == id);
             if (movie == null)
             {
                 return NotFound();
@@ -74,7 +74,7 @@ namespace DotNetWebsite.Pages.Movie.Manage
 
         private bool MovieExists(int id)
         {
-          return (_context.Movies?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Movies?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

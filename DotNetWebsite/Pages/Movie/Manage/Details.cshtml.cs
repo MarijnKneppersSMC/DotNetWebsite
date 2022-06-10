@@ -22,7 +22,7 @@ namespace DotNetWebsite.Pages.Movie.Manage
             _context = context;
         }
 
-      public Models.Movie Movie { get; set; } = default!; 
+        public Models.Movie Movie { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -36,7 +36,7 @@ namespace DotNetWebsite.Pages.Movie.Manage
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 Movie = movie;
             }

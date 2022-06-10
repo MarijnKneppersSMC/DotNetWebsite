@@ -11,13 +11,19 @@ namespace DotNetWebsite.Pages.Movie
         private string searchString = "";
 
         [BindProperty]
-        public string SearchString { get { return searchString; } set
+        public string SearchString
+        {
+            get
+            {
+                return searchString;
+            }
+            set
             {
                 searchString = value;
             }
         }
 
-        public List<Models.Movie> FilteredMovies => (!(string.IsNullOrEmpty(SearchString) || string.IsNullOrEmpty(SearchString)))? _context.Movies.Where(movie => movie.Title.ToLower().Contains(SearchString.ToLower())).ToList() : new List<Models.Movie>();
+        public List<Models.Movie> FilteredMovies => (!(string.IsNullOrEmpty(SearchString) || string.IsNullOrEmpty(SearchString))) ? _context.Movies.Where(movie => movie.Title.ToLower().Contains(SearchString.ToLower())).ToList() : new List<Models.Movie>();
 
         public IndexModel(DatabaseContext context)
         {
