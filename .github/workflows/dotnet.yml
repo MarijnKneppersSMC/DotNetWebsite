@@ -21,5 +21,6 @@ jobs:
       run: dotnet build --no-restore
     - name: Publish
       env:
-        PUBLISH_PASSWORD = ${{ secrets.PUBLISH_PASSWORD }}
+        PUBLISH_PASSWORD: ${{ secrets.PUBLISH_PASSWORD }}
       run: dotnet publish /p:PublishProfile="marijnedison - Web Deploy" /p:WebPublishMethod=MSDeploy /p:password="$PUBLISH_PASSWORD"
+      
