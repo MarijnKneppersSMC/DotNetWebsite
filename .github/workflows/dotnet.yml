@@ -3,7 +3,7 @@ name: .NET
 on:
   workflow_dispatch:
   push:
-    branches: [ "master", "action" ]
+    branches: [ "master" ]
 
 jobs:
   build:
